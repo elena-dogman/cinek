@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss'
-import tailwindcssAnimate from 'tailwindcss-animate'
+import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 const config: Config = {
   darkMode: ['class'],
@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        main: '#121212',
+        main: '#12121280',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -53,13 +53,8 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
     },
   },
   plugins: [tailwindcssAnimate],
-}
-export default config
+};
+export default config;
