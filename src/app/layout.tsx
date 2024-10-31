@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 import Header from '~/components/Header';
 import { ThemeProvider } from '~/components/ThemeProvider';
 import './globals.css';
@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: 'Streaming platform',
 };
 
-const poppins = Poppins({
-  subsets: ['latin'],
+const nunito = Nunito({
+  subsets: ['cyrillic'],
   weight: '400',
 });
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={poppins.className}>
+      <body className={nunito.className}>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'

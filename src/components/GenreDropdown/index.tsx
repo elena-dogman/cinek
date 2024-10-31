@@ -1,5 +1,7 @@
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import { fetchGenres } from '~/lib/getGenres';
+import { Genre } from '../../../types';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,22 +11,20 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 
-const genreArray = [
-  { id: '101', name: 'action' },
-  { id: '102', name: 'detective' },
-];
-const GenreDropdown = () => {
+const GenreDropdown = async () => {
+  const genres = await fetchGenres();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className='flex items-center text-sm text-white'>
-        Genre <ChevronDown className='ml-1 size-5' />
+        Жанр <ChevronDown className='ml-1 size-5' />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Select a genre</DropdownMenuLabel>
+        <DropdownMenuLabel>Выберите жанр</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {genreArray.map((item) => (
+        {genres.map((item: Genre) => (
           <DropdownMenuItem key={item?.id}>
-            <Link href={`/genre/${item?.id}?genre=${item.name}`}>{item?.name}</Link>
+            <Link href={`/genre/${item?.id}?genre=${item.genre}`}>{item?.genre}</Link>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

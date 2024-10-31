@@ -1,19 +1,11 @@
 import { SearchResults } from '../../types';
 
 const fetcher = async (url: URL, cacheTime?: number) => {
-  url.searchParams.set('include_adult', 'false');
-  url.searchParams.set('video', 'false');
-  url.searchParams.set('sort_by', 'popularity.desc');
-  url.searchParams.set('language', 'en-US');
-  url.searchParams.set('page', '1');
-  url.searchParams.set('region', 'KR');
-  url.searchParams.set('with_original_language', 'ko');
-
   const options: RequestInit = {
     method: 'GET',
     headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${process.env.TBDB_READ_ACCESS_KEY}`,
+      'accept': 'application/json',
+      'X-API-KEY': `${process.env.KINOPOISK_API_KEY}`,
     },
     next: {
       revalidate: cacheTime || 60 * 60 * 24,
@@ -25,56 +17,63 @@ const fetcher = async (url: URL, cacheTime?: number) => {
   return data;
 };
 
-export const getNowPlaying = async () => {
-  const url = new URL('https://api.themoviedb.org/3/movie/now_playing');
+export const getNowPlayingMovies = async () => {
+  const url = new URL('https://kinopoiskapiunofficial.tech/api/v2.2/films');
+  url.searchParams.set('order', 'NUM_VOTE');
+  url.searchParams.set('type', 'FILM');
   const data = await fetcher(url);
-  data.results;
+  console.log(data);
+  return data.films;
 };
+
 export const getUpcomingMovies = async () => {
-  const url = new URL('https://api.themoviedb.org/3/movie/upcoming');
+  const url = new URL('https://kinopoiskapiunofficial.tech/api/v2.2/films');
+  url.searchParams.set('order', 'RATING');
+  url.searchParams.set('type', 'FILM');
   const data = await fetcher(url);
-  return data.results;
+  return data.films;
 };
 
 export const getTopRatedMovies = async () => {
-  const url = new URL('https://api.themoviedb.org/3/movie/top_rated');
+  const url = new URL('https://kinopoiskapiunofficial.tech/api/v2.2/films/top');
+  url.searchParams.set('type', 'TOP_250_BEST_FILMS');
   const data = await fetcher(url);
-  return data.results;
+  return data.films;
 };
 
 export const getPopularMovies = async () => {
-  const url = new URL('https://api.themoviedb.org/3/movie/popular');
+  const url = new URL('https://kinopoiskapiunofficial.tech/api/v2.2/films/top');
+  url.searchParams.set('type', 'TOP_100_POPULAR_FILMS');
   const data = await fetcher(url);
-  return data.results;
+  return data.films;
 };
 
 export const getDiscoverMovies = async (id?: string, keywords?: string) => {
-  const url = new URL('https://api.themoviedb.org/3/discover/movie');
-
-  keywords && url.searchParams.set('with_keywords', keywords);
-  id && url.searchParams.set('with_genres', id);
+  const url = new URL('https://kinopoiskapiunofficial.tech/api/v2.2/films');
+  keywords && url.searchParams.set('keyword', keywords);
+  id && url.searchParams.set('genres', id);
 
   const data = await fetcher(url);
-  return data.results;
+  return data.films;
 };
 
 export const getSearchedMovies = async (term: string) => {
-  const url = new URL('https://api.themoviedb.org/3/search/movie');
-  url.searchParams.set('query', term);
+  const url = new URL('https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword');
+  url.searchParams.set('keyword', term);
 
   const data = await fetcher(url);
-  return data.results;
+  return data.films;
 };
 
 export const getMovieVideos = async (id?: string) => {
-  const url = new URL(`https://api.themoviedb.org/3/movie/${id}/videos`);
+  const url = new URL(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/videos`);
 
   const data = await fetcher(url);
-  return data.results;
+  return data.films;
 };
-export const getMovieDetails = async (id?: string) => {
-  const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
 
+export const getMovieDetails = async (id?: string) => {
+  const url = new URL(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`);
   const data = await fetcher(url);
   return data;
 };

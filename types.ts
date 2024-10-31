@@ -1,30 +1,26 @@
 export type Movie = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path?: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
+  filmId: number;
+  nameRu: string;
+  nameEn?: string;
+  year: string;
+  filmLength: string;
+  countries: { country: string }[];
+  genres: { genre: string }[];
+  rating: string;
+  ratingVoteCount: number;
+  posterUrl: string;
+  posterUrlPreview: string;
 };
 
 export type SearchResults = {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
+  pagesCount: number;
+  films: Movie[];
+  total: number;
 };
 
 export type Genre = {
   id: number;
-  name: string;
+  genre: string;
 };
 
 export type Genres = {
@@ -32,18 +28,11 @@ export type Genres = {
 };
 
 export type VideoProps = {
-  id: string;
-  iso_639_1: string;
-  iso_3166_1: string;
-  key: string;
+  url: string;
   name: string;
-  official: boolean;
-  published_at: string;
   site: string;
-  size: number;
-  type: string;
 };
 
 export type Videos = {
-  videos: VideoProps[];
+  items: VideoProps[];
 };
