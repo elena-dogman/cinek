@@ -1,7 +1,9 @@
+import CarouselBanner from '~/components/CarouselBanner';
+
 export default async function Home() {
   return (
     <main>
-      <p>CineK</p>
+      <CarouselBanner />
     </main>
   );
 }

@@ -37,7 +37,7 @@ const SearchInput = () => {
             <FormItem>
               <FormControl>
                 <Input
-                  placeholder='Поиск...'
+                  placeholder='Search...'
                   {...field}
                 />
               </FormControl>

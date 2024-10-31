@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      flex: {
+        full: '0 0 100%',
+      },
       colors: {
         main: '#12121280',
         background: 'hsl(var(--background))',

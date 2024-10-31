@@ -1,7 +1,5 @@
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
-import { fetchGenres } from '~/lib/getGenres';
-import { Genre } from '../../../types';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,22 +7,35 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
+} from '~/components/ui/dropdown-menu';
+import { getGenres } from '~/lib/getGenres';
+import { Genres } from '../../../types';
 
-const GenreDropdown = async () => {
-  const genres = await fetchGenres();
+const GenreDropDown = async () => {
+  let data: Genres;
+
+  try {
+    data = await getGenres();
+  } catch (error) {
+    console.error('Error fetching genres:', error);
+    return null;
+  }
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='flex items-center text-sm text-white'>
-        Жанр <ChevronDown className='ml-1 size-5' />
+      <DropdownMenuTrigger className='flex items-center text-sm font-medium text-white'>
+        Genre{' '}
+        <ChevronDown
+          className='ml-1'
+          size={20}
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Выберите жанр</DropdownMenuLabel>
+        <DropdownMenuLabel>Select a Genre</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {genres.map((item: Genre) => (
-          <DropdownMenuItem key={item?.id}>
-            <Link href={`/genre/${item?.id}?genre=${item.genre}`}>{item?.genre}</Link>
+        {data?.genres?.map((genre) => (
+          <DropdownMenuItem key={genre?.id}>
+            <Link href={`/genre/${genre?.id}?genre=${genre.name}`}>{genre?.name}</Link>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
@@ -32,4 +43,4 @@ const GenreDropdown = async () => {
   );
 };
 
-export default GenreDropdown;
+export default GenreDropDown;
