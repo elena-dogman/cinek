@@ -5,7 +5,7 @@ import SearchInput from '../SearchInput';
 import ThemeToggler from '../ThemeToggler';
 const Header = () => {
   return (
-    <div className='sticky z-50 flex w-full items-center justify-between gap-4 bg-main p-4 backdrop-blur-2xl transition-colors md:gap-0'>
+    <div className='sticky top-0 z-50 flex w-full items-center justify-between gap-4 bg-[#12121280] p-5 backdrop-blur-2xl transition-colors md:gap-0'>
       <div className='top-0 max-h-8 max-w-20'>
         <Link href={'/'}>
           <Image
@@ -18,7 +18,6 @@ const Header = () => {
           />
         </Link>
       </div>
-      {/* others */}
       <div className='flex items-center space-x-2'>
         <GenreDropdown />
         <SearchInput />
