@@ -16,7 +16,7 @@ const Menu = ({ title, items }: MenuProps) => {
           <Link
             href={item.href}
             key={item.title}
-            className='group mb-1 flex cursor-pointer items-center gap-x-3 border-b border-b-[#222] py-1 text-sm duration-200 hover:border-b-white hover:text-white'
+            className='hover: group mb-1 flex cursor-pointer items-center gap-x-3 border-b border-b-gray-300 py-1 text-sm text-gray-600 duration-200 hover:border-b-gray-600 hover:text-black dark:border-b-[#222] dark:text-gray-300 dark:hover:border-b-white dark:hover:text-white'
           >
             <span className='inline-flex h-2 w-2 rounded-full border border-red-700 duration-200 group-hover:bg-red-700'></span>
             {item.title}
