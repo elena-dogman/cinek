@@ -21,7 +21,7 @@ const MovieContainer = ({ title, movies, isVertical }: MovieContainerProps) => {
         </Link>
         <span className='absolute -bottom-[1.5px] left-0 z-10 inline-block h-1 w-16 bg-red-600'></span>
       </div>
-      <div className={cn('flex space-x-4 overflow-scroll px-5 py-5 lg:px-10')}>
+      <div className={cn('scrollbar-hide flex space-x-4 overflow-scroll px-5 py-5 lg:px-10')}>
         {movies.map((movie) => (
           <MovieCard
             key={movie?.id}

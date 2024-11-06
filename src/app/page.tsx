@@ -1,9 +1,12 @@
 import CarouselBanner from '~/components/CarouselBanner';
 import MovieContainer from '~/components/MovieContainer';
-import { getNowPlayingMovies } from '~/lib/getMovies';
+import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies, getUpcomingMovies } from '~/lib/getMovies';
 
 export default async function Home() {
   const nowPlayingMovies = await getNowPlayingMovies();
+  const upcomingMovies = await getUpcomingMovies();
+  const topRatedMovies = await getTopRatedMovies();
+  const popularMovies = await getPopularMovies();
   return (
     <main>
       <CarouselBanner />
@@ -11,6 +14,18 @@ export default async function Home() {
         <MovieContainer
           movies={nowPlayingMovies}
           title={'Now Playing'}
+        />
+        <MovieContainer
+          movies={upcomingMovies}
+          title={'Upcoming'}
+        />
+        <MovieContainer
+          movies={topRatedMovies}
+          title={'Top Rated'}
+        />
+        <MovieContainer
+          movies={popularMovies}
+          title={'Popular'}
         />
       </div>
     </main>
