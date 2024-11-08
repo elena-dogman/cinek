@@ -38,7 +38,7 @@ const MovieContainer = ({ title, movies, isVertical }: MovieContainerProps) => {
                 <MovieCard movie={movie} />
                 <div className='max-w-2xl'>
                   <p className='font-bold'>
-                    {movie?.title} ({movie?.release_date.split('-')[0]})
+                    {movie?.title} {movie?.release_date ? `(${movie.release_date.split('-')[0]})` : ''}
                   </p>
                   <hr className='mb-3 border-gray-700' />
                   <p>{movie?.overview}</p>
