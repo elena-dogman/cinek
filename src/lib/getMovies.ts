@@ -1,4 +1,4 @@
-import { SearchResults } from '../../types';
+import { MovieDetails } from '../../types';
 const fetcher = async (url: URL, cacheTime?: number) => {
   url.searchParams.set('include_adult', 'false');
   url.searchParams.set('include_video', 'false');
@@ -18,7 +18,7 @@ const fetcher = async (url: URL, cacheTime?: number) => {
   };
 
   const response = await fetch(url.toString(), options);
-  const data = (await response.json()) as SearchResults;
+  const data = await response.json();
 
   return data;
 };
@@ -71,7 +71,7 @@ export const getMovieVideos = async (id?: string) => {
   const data = await fetcher(url);
   return data.results;
 };
-export const getMovieDetails = async (id?: string) => {
+export const getMovieDetails = async (id?: string): Promise<MovieDetails> => {
   const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
 
   const data = await fetcher(url);
