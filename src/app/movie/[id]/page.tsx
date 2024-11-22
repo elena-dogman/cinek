@@ -46,30 +46,30 @@ const MovieDetailPage = async ({ params: { id } }: MovieDetailPageProps) => {
           <div className='flex w-full flex-col gap-2 lg:w-1/2'>
             <h2 className='text-2xl font-semibold underline decoration-[1px]'>{details?.original_title}</h2>
             <p className='mt-2 text-sm leading-6 tracking-wide'>{details?.overview}</p>
-            <p className='text-sm text-gray-200'>
-              IMDB: <span className='font-medium text-white'>{details.vote_average}</span>
+            <p className='text-sm font-semibold dark:font-medium dark:text-gray-200'>
+              IMDB: <span className='font-medium dark:text-white'>{details.vote_average}</span>
             </p>
-            <p className='text-sm text-gray-200'>
-              Votes: <span className='font-medium text-white'>{details.vote_count}</span>
+            <p className='text-sm font-semibold dark:font-medium dark:text-gray-200'>
+              Votes: <span className='font-medium dark:text-white'>{details.vote_count}</span>
             </p>
-            <p className='text-sm text-gray-200'>
-              Release Data: <span className='font-medium text-white'>{details.release_date}</span>
+            <p className='text-sm font-semibold dark:font-medium dark:text-gray-200'>
+              Release Data: <span className='font-medium dark:text-white'>{details.release_date}</span>
             </p>
-            <p className='text-sm text-gray-200'>
+            <p className='text-sm font-semibold dark:font-medium dark:text-gray-200'>
               Genres:{' '}
               {details?.genres.map((item: any) => (
                 <span
                   key={item?.id}
-                  className='mr-1 font-medium text-white'
+                  className='mr-1 font-medium dark:text-white'
                 >
                   {item?.name},
                 </span>
               ))}
             </p>
-            <p className='text-sm text-gray-200'>
-              Tag Line: <span className='font-medium text-white'>{details.tagline}</span>
+            <p className='text-sm font-semibold dark:font-medium dark:text-gray-200'>
+              Tag Line: <span className='font-medium dark:text-white'>{details.tagline}</span>
             </p>
-            <p className='text-sm text-gray-200'>
+            <p className='text-sm font-semibold dark:font-medium dark:text-gray-200'>
               Status:{' '}
               <span className={`font-medium ${details?.status === 'Released' ? 'text-green-500' : 'text-red-500'}`}>
                 {details.status}

@@ -19,7 +19,7 @@ const VideoPlayer = ({ videos }: Videos) => {
             key={video?.id}
             className='relative w-full overflow-hidden rounded-md border border-gray-600'
           >
-            <p>
+            <p className='px-6 py-3 text-sm font-medium'>
               Type: {video?.type} - {video?.official ? 'Official' : 'General'}
             </p>
             <YouTube
