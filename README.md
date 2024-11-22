@@ -47,6 +47,10 @@ NEXT_PUBLIC_TMDB_API_KEY=your_api_key_here
 
    ```
 
+## 🖥️ Deployment
+
+https://cinek.vercel.app/
+
 ## 📜 License
 
 This project is licensed under the MIT License.
